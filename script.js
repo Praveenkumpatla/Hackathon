@@ -74,6 +74,7 @@ btnlink.setAttribute("href","https://github.com/login?return_to=%2Fjoin%3Fref_ct
 let newbtn = newTag("botton","btn ");
 let btnicon = newTag("img");
 btnicon.setAttribute("src","btn.png");
+btnicon.style.borderRadius = "5px";
 btnicon.style.height = "25px";
 newbtn.append(btnicon);
 newbtn.style.float = "right";
