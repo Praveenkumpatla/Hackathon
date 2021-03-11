@@ -267,22 +267,28 @@ function print1(data){
     if(count>0){
         document.location.reload(true);
     }
-    console.log(count);
     if(data.items.length>0){
-        let btnicon = newTag("img","mt-2");
-        btnicon.setAttribute("src",data.items[0].owner.avatar_url);
-        btnicon.style.height = "30px";
-        btnicon.style.width = "30px";
-        let next = newTag("span","mt-2");
-        next.innerHTML = "Username : " + data.items[0].owner.login;
-        let line = newTag("a");
-        line.innerHTML = `Click here to access the files in ${inp.value}` ;
-        let d1 = newTag("div");
-        d1.innerHTML = "Total no. of Files : " + data.items[0].size;
-        let d2 = newTag("div");
-        d2.innerHTML = "Langauge used : " + data.items[0].language;
-        line.setAttribute("href",`https://github.com/${data.items[0].full_name}`);
-        block1.append(next,btnicon,d1,d2,line);
+        let no = newTag("div");
+        no.innerHTML = "Total Repo's found : "+ data.total_count;
+        let no1 = newTag("div");
+        no1.innerHTML = "Some of them :";
+        block1.append(no,no1);
+        for(let i in data.items){
+            let btnicon = newTag("img","mt-2");
+            btnicon.setAttribute("src",data.items[i].owner.avatar_url);
+            btnicon.style.height = "30px";
+            btnicon.style.width = "30px";
+            let next = newTag("div","mt-2");
+            next.innerHTML = "Username : " + data.items[i].owner.login;
+            let line = newTag("a");
+            line.innerHTML = `Click here to access the files in ${data.items[i].full_name}` ;
+            let d1 = newTag("div");
+            d1.innerHTML = "Total no. of Files : " + data.items[i].size;
+            let d2 = newTag("div");
+            d2.innerHTML = "Langauge used : " + data.items[i].language;
+            line.setAttribute("href",`https://github.com/${data.items[i].full_name}`);
+            block1.append(next,btnicon,d1,d2,line);
+        }
     }
     else{
         let next = document.createElement("br");
